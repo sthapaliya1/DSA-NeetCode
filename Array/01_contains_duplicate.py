@@ -45,6 +45,9 @@ class Solution:
       
       return False
 
+# Time Complexity = O(n)
+# Space Complexity = O(n)
+
 
 # Dry run
 
@@ -74,6 +77,7 @@ class Solution:
 
 #Time complexity total = O(nlogn) + O(n)
 # So, time complexity = O(nlogn)
+#Space complexity = O(1)
 
 
 #So, the best solution to this problem  is using hashing because it has O(n) time complexity and
