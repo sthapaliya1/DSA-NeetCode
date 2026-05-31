@@ -9,6 +9,28 @@
 # Input: nums = [7,7], k = 1
 # Output: [7]
 
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        
+      S= {}
+
+      for num in nums:  # O (n)
+        S[num] = S.get(num, 0) + 1
+
+      S = sorted(S.items(), key=lambda x: x[1], reverse=True) # O (m log m)
+
+      return [key for key, value in S[:k]] #O(k)
+
+ # In python to sort in ascending or descending order:
+ # sorted(nums)                # ascending
+ # sorted(nums, reverse=True)  # descending
+             
+
+# Time complexity = O(n)+ O(mlogm) + O(k)= O(n + mlogm)
+# Space complexity = O(n)
+        
+             
 import heapq
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
@@ -29,7 +51,7 @@ class Solution:
             heapq.heappushpop(ans,[val,key])
      return [key for value, key in ans] # O(k)
         
-# Time Complexity is O(n)+ O(mlogk)+ O(k)
+# Time Complexity is O(n)+ O(mlogk)+ O(k) = O(n+ mlogk)
 # Space Complexity:
 
 # O(m) for the frequency dictionary,
