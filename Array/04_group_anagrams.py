@@ -67,3 +67,12 @@ class Solution:
 # 'b' -> 98 - 97 = 1
 # 'c' -> 99 - 97 = 2
 # 'z' -> 122 - 97 = 25
+
+
+# di.get(sorted_word,[])+[word] 
+
+# simplified version :
+
+# if sorted_word in dict:
+#    di[sorted_word]=[]
+# di[sorted_word].append(word)

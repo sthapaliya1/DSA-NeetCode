@@ -75,7 +75,7 @@ class Solution:
     return sorted(t)==sorted(s)
 
     #Time complexity = O(nlogn) -> due to sorting algo  O(n)<O(nlogn)<O(n^2)
-    #Space complexity = O(n),
+    #Space complexity = O(n),  -> comparing two sorted list
 
     # If sort() was used then space complexity would have been O(1) because it is used for list and modifies the list 
     # doesn't create a complete new list
@@ -112,4 +112,7 @@ class Solution:
 
     
         
-             
+
+
+
+
