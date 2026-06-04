@@ -73,6 +73,6 @@ class Solution:
 
 # simplified version :
 
-# if sorted_word in dict:
+# if sorted_word not in dict:
 #    di[sorted_word]=[]
 # di[sorted_word].append(word)
