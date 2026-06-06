@@ -28,7 +28,7 @@ class Solution:
         for i in range(0,n):
             for j in range(0,n):
                 if numbers[i]+numbers[j]==target and i!=j:
-                    return [numbers[i],numbers[j]]
+                    return [i+1,j+1]
         return 0
 
 # Time Complexity: O(n^2)
@@ -36,3 +36,41 @@ class Solution:
 
 
 # Solution using the hashmap :
+
+
+
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        
+        seen = {}
+
+        for i in range(len(numbers)):
+             diff = target - numbers[i] 
+
+             if diff not in seen:
+                seen[numbers[i]]= i
+             else:
+                return [seen[diff] + 1, i + 1]
+
+#Time complexity =  O(n)
+#Space complexity = O(n)
+
+# Optimal solution: Two pointer technique
+
+        left = 0
+        right = len(numbers) - 1
+
+        while left<right:
+
+            total = numbers[left] + numbers[right]
+
+            if total < target:
+               left += 1
+            elif total > target:
+                right -= 1
+            else:
+                return [left+1, right+1]
+
+
+# Time Complexity = O(n)
+# Space complexity = O(1)
