@@ -15,7 +15,6 @@
 # Explanation: nums[0] + nums[1] == 7, so we return [0, 1].
 
 # Example 2:
-
 # Input: nums = [4,5,6], target = 10
 
 # Output: [0,2]
