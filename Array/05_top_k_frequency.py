@@ -10,17 +10,19 @@
 # Output: [7]
 
 
+# The output can be in any order....
+
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         
-      S= {}
+      S= {}  # O(m)
 
       for num in nums:  # O (n)
         S[num] = S.get(num, 0) + 1
 
       S = sorted(S.items(), key=lambda x: x[1], reverse=True) # O (m log m)
 
-      return [key for key, value in S[:k]] #O(k)
+      return [key for key, value in S[:k]] # runs k times so time complexity is O(k) and returns the new list O(k) space
 
  # In python to sort in ascending or descending order:
  # sorted(nums)                # ascending
@@ -28,7 +30,7 @@ class Solution:
              
 
 # Time complexity = O(n)+ O(mlogm) + O(k)= O(n + mlogm)
-# Space complexity = O(n)
+# Space complexity = O(m) + O(k)   =  k <=m   = O(m)
         
              
 import heapq
