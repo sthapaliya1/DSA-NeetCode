@@ -58,29 +58,8 @@ class Solution:
              if diff not in seen:
                 seen[numbers[i]]= i
              else:
-                return [seen[diff] + 1, i + 1]
+                return [seen[diff] , i ]
 
 # Time complexity = O(n)
 # Space complexity = O(n)
 
-
- # Optimal solution : Two pointer:
- class Solution:
-    def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        
-        left = 0
-        right = len(numbers) - 1
-
-        while left<right:
-
-            total = numbers[left] + numbers[right]
-
-            if total < target:
-               left += 1
-            elif total > target:
-                right -= 1
-            else:
-                return [left+1, right+1]
-
-    Time complexity: O(n)
-    Space complexity: O(1)
