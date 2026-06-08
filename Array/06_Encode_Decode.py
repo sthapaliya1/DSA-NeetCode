@@ -37,20 +37,30 @@
 # Brute force solution
 # Adding an character between string to decode it:
  def encode(self, strs: List[str]) -> str:
-    result "#".join(str)
+        result = "#".join(strs)
+        return result
 
-def decode(self, s: str) -> List[str]:
-    result split("#")
+ def decode(self, s: str) -> List[str]:
+        result = s.split("#")
+        return result
+
+
+#Time complexity : O(n)
+#Space complexity: O(n)
+
 
 # Problem : string = [abc#def,ghij]  Encoding = abc#def#ghij
             #    decoding    = [abc,def,ghij]
 
 Similarly if adding of ','
+
 def encode(self, strs: List[str]) -> str:
-    result ",".join(str)
+        result = ",".join(strs)
+        return result
 
 def decode(self, s: str) -> List[str]:
-    result split(",")
+        result = s.split(",")
+        return result
 
 # Problem : string  ["hello,world","pop"]  Encoding = [hello,world,pop]
 #  Decoding = [hello, world, pop]
@@ -66,6 +76,29 @@ Better approach:
           for s in strs:
              res += str(len(s)) + "#" + s
           return res
+
+
+# Time complexity = O(n^2)
+# coz first we will have to the string concatenation one by one
+# dry run:
+# first iteration  is :  5#hello
+#second is : 5#hello + 5#world -> 5#hello#world until m 
+
+
+#however using the list :
+
+  res = []
+
+  for s in strs:
+        res.append(str(len(s)) + "#" + s)
+  return "".join(res)
+
+  # Time complexity = O(n)
+  # dry run :
+  # first iteration : [5#hello, 5#world] // nothing is being copied repeatedly
+  # so the output : .join(res) -> 5#hello5#world
+
+  #Space complexity = O(n)
 
     def decode(self, s: str) -> List[str]:
            res=[]
