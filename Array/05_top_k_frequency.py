@@ -41,10 +41,14 @@ class Solution:
      S={}
 
      for num in nums:   #O(n)
-        if num not in S:
-            S[num] = 1
-        else:
-            S[num]+=1
+        # if num not in S:
+        #     S[num] = 1
+        # else:
+        #     S[num]+=1
+
+
+        # This can be replaced by :
+           S[num] = S.get(num,0)+1
 
      for key,val in S.items(): # O(m)   
         if len(ans)<k:
