@@ -30,8 +30,8 @@ class Solution:
             res.append(product)
         return res
 
-Time Complexity : O(n^2)
-Space Complexity : O(n)
+# Time Complexity : O(n^2)
+# Space Complexity : O(n)
 
 
 #Optimal solution:
@@ -65,3 +65,30 @@ class Solution:
 
 # Time complexity: O(n)
 # Space complexity: O(n)
+
+
+
+# More optimal solution:
+
+
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+
+        res= [1] * n
+        suffix = 1
+
+
+        for i in range(1,n):
+            res[i] = res[i-1] * nums[i-1]
+
+        for i in range(n-2, -1, -1): # running the loop backwards from the start, stop, step ,
+              suffix *= nums[i+1]
+              res[i] *= suffix
+
+        return result
+
+# Time complexity : O(n)
+# Space complexity : O(1)
+
+# If there is array called as return the array, then the returned array wont take up much space
