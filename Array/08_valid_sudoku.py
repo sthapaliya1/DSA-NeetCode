@@ -54,18 +54,10 @@ class Solution:
 
         # No duplicates found
         return True
-
-  # Time complexity : O(1)
-  # Space complextiy: O(1)      
-
+    
+# Brute Force : O(n^3) , Space : O(1)
 
 # The set solution is optimal because we dont have to scan rows, columns, and boxes repeatedly .
-
-
-# However,  the set approach optimal because if the board size were allowed to grow:
-
-# Brute Force : O(n^3) , Space : O(1)
-# Set Solution: O(n^2), Space: O(n^2)
 
 
 # Optimal solution
@@ -91,5 +83,54 @@ class Solution:
             squares[(r//3, c//3)].add(board[r][c])
      return True
 
-     # Time complexity : O(1)
-     # Space complextiy: O(1)
+
+
+
+     # Time complexity : O(n^2)
+     # Space complextiy: O(n)
+
+
+
+
+
+     # The time and space complexity for fixed sudoku solution of 9*9 grid is:
+     # Time complexity = O(1)
+     # Space complexity = O(1)
+     # It is because the size of the grid is fixed 9*9
+
+
+     # However, if the grid was dynamic ( can grow in size ) then the time and space complexity will differ:
+
+     # For Brute force solution:
+       # The Time complexity is O(n^3)
+
+        #   for r in range(n) -> row O(n)
+        #      for c in range(n) -> column scan
+        #         for grid  check scanning a 3*3 box -> O(n)
+
+        #         Total : O(n^3)
+
+        # Space complexity = O(1) -> no additional space needed
+
+    
+    # Using the optimal solution:
+        # The time complexity is O(n^2)
+
+        #  for r in range(n) -> row O(n)
+        #      for c in range(n) -> column scan
+
+        #      Total : O(n^2)
+    
+        # # For the space complexity then:
+        #    we used dictionary so : 
+        #       the space complexity for a row dictionary : 
+        #         rows {
+        #             0 : {1,2,3,4},
+        #             1 : {1,2,3,4},
+        #             2: {1,2,3,4},
+        #             3: {1,2,3,4}
+        #         }
+        #         so the space complexity becomes O(n^2) , then likewise for the total space complexity :
+        #           n^2 + n^2 + n^2
+
+        #           : How many values are stored : 16 diff values: which is 4^2 i.e n^2
