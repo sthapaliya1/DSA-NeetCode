@@ -87,7 +87,7 @@ class Solution:
 
 
      # Time complexity : O(n^2)
-     # Space complextiy: O(n)
+     # Space complextiy: O(n^2)
 
 
 
