@@ -24,53 +24,110 @@
 
 
 # The optimal solution:
-
-
-
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
+     
         n = len(nums)
 
-  # Edge case:
-        # If array is empty, there is no sequence
         if n == 0:
             return 0
 
-        # Stores the longest consecutive sequence found so far
+        visited = set()
         longest = 1
 
-        # Create a set for O(1) lookup
-        st = set()
+        # Add all numbers to set
+        for num in nums:
+            visited.add(num)
 
-        # Insert all numbers into the set
-        for i in range(n):
-            st.add(nums[i])
-
-        # Traverse every unique element
-        for it in st:
-
-            # Check whether 'it' is the start of a sequence
-            # Example:
-            # 1,2,3,4
-            # For 1 -> 0 not present => start
-            # For 2 -> 1 present => not start
-            if it - 1 not in st:
-
-                # Current sequence length
+        # Loop through the set
+        for it in visited:
+            if it - 1 not in visited:
                 cnt = 1
-
-                # Current number
                 x = it
 
-                # Keep moving forward while next number exists
-                while x + 1 in st:  # every num is visited only once in the loop
+                while x + 1 in visited:
                     x = x + 1
-                    cnt = cnt + 1
+                    cnt += 1
 
-                # Update longest sequence length
-                longest = max(longest, cnt)
-
+                longest = max(cnt, longest)
         return longest
 
 # Time complexity : O(n)
 # Space complexity: O(n)
+
+
+# Shorter version:
+
+  visited = set(nums)
+        longest = 0
+
+        for it in visited:
+            if it - 1 not in visited:
+                cnt = 1
+                x = it
+
+                while x + 1 in visited:
+                    x += 1
+                    cnt += 1
+
+                longest = max(longest, cnt)
+
+        return longest
+
+
+# The better solution using sort:
+        nums.sort()
+        n=len(nums)
+
+        cnt=1
+        last_smaller=nums[0]
+        longest=1
+
+        
+
+        for i in range(0,n):
+            if nums[i]-1 == last_smaller:
+                cnt=cnt+1
+                last_smaller=nums[i]
+
+            elif nums[i]!=last_smaller:
+                cnt=1
+                last_smaller=nums[i]
+
+            longest=max(longest,cnt)
+
+        return longest
+
+
+
+
+
+    # The Brute force solution:
+    class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+     
+        n = len(nums)
+
+        if n == 0:
+            return 0
+
+        def ls(arr, num):
+            for i in range(n):
+                if arr[i] == num:
+                    return True
+            return False
+
+        longest = 1
+
+        for i in range(n):
+
+            x = nums[i]
+            cnt = 1
+
+            while ls(nums, x + 1):
+                x += 1
+                cnt += 1
+
+            longest = max(longest, cnt)
+
+        return longest
