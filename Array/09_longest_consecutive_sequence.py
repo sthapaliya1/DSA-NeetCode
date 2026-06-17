@@ -23,7 +23,77 @@
 # Output: 7
 
 
+# Brute force solution:
+ class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+     
+        n = len(nums)
+        if n == 0:
+            return 0
+
+        def ls(arr, num): 
+            for i in range(n): # O(n)
+                if arr[i] == num:
+                    return True
+            return False
+
+        longest = 1
+
+        for i in range(n): #O(n)
+            x = nums[i]
+            cnt = 1
+
+            while ls(nums, x + 1): # O(n)
+                x += 1
+                cnt += 1
+
+            longest = max(longest, cnt)
+
+        return longest
+
+# Time complexity: O(n) * O(n) * O(n)
+# Space complexity: O(1)
+
+
+
+# Better solution:
+
+# cnt=1,2,3,4        last_smaller=2,3,4,5      longest=1
+
+# Three steps:
+# If num-1 is last_smaller:  
+        #   increase count and update
+# If num is same as last number, do nothing
+# If num!=last_smaller start a new sequence
+
+        nums.sort()  # O(nlogn)
+        n=len(nums)
+        cnt=1
+        last_smaller=nums[0]
+        longest=1
+
+        for i in range(0,n): # O(n)
+            if nums[i]-1 == last_smaller:
+                cnt=cnt+1
+                last_smaller=nums[i]
+
+            elif nums[i]!=last_smaller:
+                cnt=1
+                last_smaller=nums[i]
+
+            longest=max(longest,cnt)
+
+        return longest
+
+
+# Time complexity : O(nlogn) + O(n) = O(nlogn)
+# Space complexity: O(1)
+
+
 # The optimal solution:
+# Using set:
+
+
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
      
@@ -58,8 +128,15 @@ class Solution:
 
 # Shorter version:
 
-  visited = set(nums)
-        longest = 0
+        n = len(nums)
+
+        if n == 0:
+            return 0
+
+
+
+        visited = set(nums)
+        longest = 1
 
         for it in visited:
             if it - 1 not in visited:
@@ -74,60 +151,5 @@ class Solution:
 
         return longest
 
-
-# The better solution using sort:
-        nums.sort()
-        n=len(nums)
-
-        cnt=1
-        last_smaller=nums[0]
-        longest=1
-
-        
-
-        for i in range(0,n):
-            if nums[i]-1 == last_smaller:
-                cnt=cnt+1
-                last_smaller=nums[i]
-
-            elif nums[i]!=last_smaller:
-                cnt=1
-                last_smaller=nums[i]
-
-            longest=max(longest,cnt)
-
-        return longest
-
-
-
-
-
-    # The Brute force solution:
-    class Solution:
-    def longestConsecutive(self, nums: List[int]) -> int:
-     
-        n = len(nums)
-
-        if n == 0:
-            return 0
-
-        def ls(arr, num):
-            for i in range(n):
-                if arr[i] == num:
-                    return True
-            return False
-
-        longest = 1
-
-        for i in range(n):
-
-            x = nums[i]
-            cnt = 1
-
-            while ls(nums, x + 1):
-                x += 1
-                cnt += 1
-
-            longest = max(longest, cnt)
-
-        return longest
+# Time complexity : O(n)
+# Space complexity: O(n)
