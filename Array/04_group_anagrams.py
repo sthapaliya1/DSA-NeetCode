@@ -38,6 +38,7 @@ class Solution:
         return list(di.values())  # return the values of the dictionary
         
 
+# So, n is the number of strings we are given, n is the average length of the string
 # The time complexity is O(n* klogk)
 # The space complexity is O(n*k)
 
