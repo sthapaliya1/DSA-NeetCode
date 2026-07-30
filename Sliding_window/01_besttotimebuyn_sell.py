@@ -18,7 +18,6 @@
 #     Input: prices = [10,8,7,5,2]
 #     Output: 0
 
-
 # calculate the minimum to calculate the buying price.
 # Then selling price should be maximum.
 # Then every part should be the selling, price[i] is called as selling price 
