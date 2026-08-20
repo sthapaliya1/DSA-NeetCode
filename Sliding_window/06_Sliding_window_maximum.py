@@ -11,8 +11,6 @@
 
 
 # Brute force solution use loops:
-
-
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         
@@ -28,7 +26,8 @@ class Solution:
             result.append(maximum)
         return result
     
-    
+# Time complexity = O(n^2)
+# Space complexity = O(n)
     
     
 # The optimized solution:
@@ -39,8 +38,8 @@ from typing import List
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         
-        dq=deque()
-        result=[]
+        dq=deque()        # O(k)
+        result=[]         # O(n)
 
         # Build the first window:
         for i in range(k):
@@ -68,6 +67,8 @@ class Solution:
         result.append(nums[dq[0]])
         return result
 
+# Time complexity = O(n)
+# Space complexity = O(k) auxiliary space, or O(n) including result array
 
 
 
